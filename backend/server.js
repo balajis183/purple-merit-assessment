@@ -16,11 +16,13 @@ app.use(express.json());
 
 //Import Route file
 const driverRoutes= require("./routes/driverRoutes");
+const routeRoutes=require("./routes/routeRoutes");
 
 
 //Routes
 app.use('/api/drivers', driverRoutes);
-  
+app.use('/api/routes',routeRoutes);
+
 // Simple test route
 app.get("/", (req, res) => {
   res.send("Server is working 🚀");
