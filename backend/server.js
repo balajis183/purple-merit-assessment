@@ -17,11 +17,13 @@ app.use(express.json());
 //Import Route file
 const driverRoutes= require("./routes/driverRoutes");
 const routeRoutes=require("./routes/routeRoutes");
+const orderRoutes=require("./routes/orderRoutes");
 
 
 //Routes
 app.use('/api/drivers', driverRoutes);
-app.use('/api/routes',routeRoutes);
+app.use('/api/routes', routeRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Simple test route
 app.get("/", (req, res) => {
