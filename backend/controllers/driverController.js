@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 // @desc    Get all drivers
 // @route   GET /api/drivers
-// @access  Public
 const getAllDrivers = async (req, res) => {
   try {
     const drivers = await Driver.find({});
@@ -15,7 +14,6 @@ const getAllDrivers = async (req, res) => {
 
 // @desc    Get a single driver by ID
 // @route   GET /api/drivers/:id
-// @access  Public
 const getDriverById = async (req, res) => {
   try {
     const driver = await Driver.findById(req.params.id);
@@ -30,7 +28,6 @@ const getDriverById = async (req, res) => {
 
 // @desc    Create a new driver
 // @route   POST /api/drivers
-// @access  Public
 const createDriver = async (req, res) => {
   try {
     const { name, currentShiftHours, past7DayWorkHours } = req.body;
@@ -54,7 +51,6 @@ const createDriver = async (req, res) => {
 
 // @desc    Update an existing driver
 // @route   PUT /api/drivers/:id
-// @access  Public
 const updateDriver = async (req, res) => {
     
   try {
@@ -81,7 +77,6 @@ const updateDriver = async (req, res) => {
 
 // @desc    Delete a driver
 // @route   DELETE /api/drivers/:id
-// @access  Public
 const deleteDriver = async (req, res) => {
   try {
     const driver = await Driver.findByIdAndDelete(req.params.id);

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 // @desc    Get all routes
 // @route   GET /api/routes
-// @access  Public
 const getAllRoutes = async (req, res) => {
   try {
     const routes = await Route.find({});
@@ -15,7 +14,6 @@ const getAllRoutes = async (req, res) => {
 
 // @desc    Get a single route by ID
 // @route   GET /api/routes/:id
-// @access  Public
 const getRouteById = async (req, res) => {
   try {
     const route = await Route.findById(req.params.id);
@@ -30,7 +28,6 @@ const getRouteById = async (req, res) => {
 
 // @desc    Create a new route
 // @route   POST /api/routes
-// @access  Public
 const createRoute = async (req, res) => {
   try {
     const { routeID, distanceInKm, trafficLevel, baseTimeInMinutes } = req.body;
@@ -58,7 +55,6 @@ const createRoute = async (req, res) => {
 
 // @desc    Update an existing route
 // @route   PUT /api/routes/:id
-// @access  Public
 const updateRoute = async (req, res) => {
   try {
     const route = await Route.findByIdAndUpdate(
@@ -82,7 +78,6 @@ const updateRoute = async (req, res) => {
 
 // @desc    Delete a route
 // @route   DELETE /api/routes/:id
-// @access  Public
 const deleteRoute = async (req, res) => {
   try {
     const route = await Route.findByIdAndDelete(req.params.id);

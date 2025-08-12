@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 // @desc    Get all orders
 // @route   GET /api/orders
-// @access  Public
 const getAllOrders = async (req, res) => {
   try {
     // .populate() will replace the assignedRoute ObjectId with the full route document
@@ -16,7 +15,6 @@ const getAllOrders = async (req, res) => {
 
 // @desc    Get a single order by ID
 // @route   GET /api/orders/:id
-// @access  Public
 const getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).populate('assignedRoute');
@@ -31,7 +29,6 @@ const getOrderById = async (req, res) => {
 
 // @desc    Create a new order
 // @route   POST /api/orders
-// @access  Public
 const createOrder = async (req, res) => {
   try {
     const { orderID, valueInRs, assignedRoute } = req.body;
@@ -58,7 +55,6 @@ const createOrder = async (req, res) => {
 
 // @desc    Update an existing order
 // @route   PUT /api/orders/:id
-// @access  Public
 const updateOrder = async (req, res) => {
   try {
     const order = await Order.findByIdAndUpdate(
@@ -79,7 +75,6 @@ const updateOrder = async (req, res) => {
 
 // @desc    Delete an order
 // @route   DELETE /api/orders/:id
-// @access  Public
 const deleteOrder = async (req, res) => {
   try {
     const order = await Order.findByIdAndDelete(req.params.id);
