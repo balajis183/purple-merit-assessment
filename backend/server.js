@@ -19,12 +19,14 @@ const driverRoutes= require("./routes/driverRoutes");
 const routeRoutes=require("./routes/routeRoutes");
 const orderRoutes=require("./routes/orderRoutes");
 const authRoutes=require("./routes/authRoutes");
+const simulationRoutes=require("./routes/simulationRoutes");
 
 //Routes
 app.use('/api/drivers', driverRoutes);
 app.use('/api/routes', routeRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/simulation', simulationRoutes);
 
 // Simple test route
 app.get("/", (req, res) => {
