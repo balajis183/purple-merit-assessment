@@ -13,11 +13,11 @@ const { protect, isManager } = require('../middleware/authMiddleware');
 
 // Routes for the collection endpoint: /api/drivers
 router.get("/", protect, isManager, getAllDrivers);
-router.post("/", createDriver);
+router.post("/",protect, isManager, createDriver);
 
 // Routes for a single document endpoint: /api/drivers/:id
-router.get("/:id", getDriverById);
-router.put("/:id", updateDriver);
-router.delete("/:id", deleteDriver);
+router.get("/:id",protect, isManager, getDriverById);
+router.put("/:id",protect, isManager, updateDriver);
+router.delete("/:id",protect, isManager, deleteDriver);
 
 module.exports = router;

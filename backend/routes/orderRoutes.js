@@ -9,13 +9,15 @@ const {
   deleteOrder,
 } = require("../controllers/orderController");
 
+const { protect, isManager } = require('../middleware/authMiddleware');
+
 // Routes for the collection endpoint: /api/orders
-router.get("/", getAllOrders);
-router.post("/", createOrder);
+router.get("/",  protect, isManager, getAllOrders);
+router.post("/", protect, isManager, createOrder);
 
 // Routes for a single document endpoint: /api/orders/:id
-router.get("/:id", getOrderById);
-router.put("/:id", updateOrder);
-router.delete("/:id", deleteOrder);
+router.get("/:id", protect, isManager, getOrderById);
+router.put("/:id", protect, isManager, updateOrder);
+router.delete("/:id", protect, isManager, deleteOrder);
 
 module.exports = router;
