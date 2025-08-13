@@ -130,6 +130,19 @@ const runSimulation = async (req, res) => {
   }
 };
 
+
+// @desc    Get all simulation results
+// @route   GET /api/simulation/history
+// @access  Private (Manager only)
+const getSimulationHistory = async (req, res) => {
+  try {
+    const results = await SimulationResult.find({}).sort({ timestamp: -1 });
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error: error.message });
+  }
+};
+
 module.exports = {
-  runSimulation,
+  runSimulation,getSimulationHistory
 };
