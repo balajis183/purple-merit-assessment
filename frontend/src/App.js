@@ -11,6 +11,8 @@ import RoutesPage from './pages/RoutesPage';
 import OrdersPage from './pages/OrdersPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import Dashboard from './pages/Dashboard';
+import HistoryPage from './pages/HistoryPage';
 
 const App = () => {
   return (
@@ -20,7 +22,8 @@ const App = () => {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Dashboard />} />
+             <Route path="/history" element={<HistoryPage />} />
             <Route path="/simulation" element={<SimulationPage />} />
             <Route path="/drivers" element={<DriversPage />} />
             <Route path="/routes" element={<RoutesPage />} />

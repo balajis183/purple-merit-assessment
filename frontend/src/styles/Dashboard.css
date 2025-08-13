@@ -1,0 +1,116 @@
+.dashboard-container {
+    padding: 2rem;
+    background-color: #f4f7f6;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.dashboard-header p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.kpi-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.kpi-icon {
+    font-size: 3rem;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.kpi-card.profit .kpi-icon {
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+.kpi-card.efficiency .kpi-icon {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.kpi-info p {
+    margin: 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.kpi-info h2 {
+    margin: 0;
+    font-size: 2.25rem;
+    color: #2c3e50;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.chart-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+.chart-card h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: #34495e;
+}
+
+.loading-container, .error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 1.5rem;
+    color: #34495e;
+}
+
+@media (max-width: 992px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+    .kpi-card {
+        padding: 1.5rem;
+    }
+    .kpi-info h2 {
+        font-size: 1.75rem;
+    }
+}
