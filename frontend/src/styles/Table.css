@@ -1,3 +1,4 @@
+/* src/styles/Table.css */
 .app-table {
     width: 100%;
     border-collapse: collapse;
@@ -55,6 +56,7 @@
         display: block;
         width: 100%;
         border: none;
+        box-shadow: none;
     }
 
     .app-table thead {
@@ -62,7 +64,8 @@
     }
 
     .app-table tr {
-        display: block;
+        display: flex;
+        flex-direction: column;
         margin-bottom: 1rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 0.5rem;
@@ -72,20 +75,38 @@
     }
 
     .app-table td {
-        display: block;
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .app-table tr:last-child td {
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .app-table tr:last-of-type td:last-child {
+      border-bottom: none;
     }
 
     .app-table td::before {
         content: attr(data-label);
-        position: absolute;
-        left: 1rem;
-        width: 45%;
-        text-align: left;
         font-weight: 600;
         text-transform: uppercase;
         color: #4b5563;
+        flex-basis: 40%;
+    }
+    
+    .app-table td:last-child {
+      padding: 1rem;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    
+    .app-table td:last-child::before {
+      content: '';
+      display: none;
     }
 }
