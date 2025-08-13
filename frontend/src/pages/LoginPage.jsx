@@ -34,7 +34,7 @@ const LoginPage = () => {
       localStorage.setItem('username', data.username); 
 
       console.log('Login successful, token:', data.token);
-      navigate('/'); 
+      navigate('/dashboard'); 
 
     } catch (err) {
       console.error('Login error:', err);

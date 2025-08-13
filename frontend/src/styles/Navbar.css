@@ -89,3 +89,13 @@
         padding: 1rem 0;
     }
 }
+
+.logout-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}

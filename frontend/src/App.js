@@ -22,7 +22,8 @@ const App = () => {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<HomePage />} />
+             <Route path="/dashboard" element={<Dashboard/>} />
              <Route path="/history" element={<HistoryPage />} />
             <Route path="/simulation" element={<SimulationPage />} />
             <Route path="/drivers" element={<DriversPage />} />
