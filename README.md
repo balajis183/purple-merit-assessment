@@ -15,6 +15,7 @@ Welcome to the GreenCart Logistics project, a full-stack web application designe
 ## Features
 
 * **Secure Manager Authentication**: JWT-based authentication ensures only authorized managers can access the dashboard.
+* **Initial Data Seeding** : The backend includes a script to automatically seed the database with the initial data provided in the CSV files, creating a consistent and testable starting point for the application.
 * **Dynamic Simulation**: Run delivery simulations with variable inputs like the number of drivers and max work hours.
 * **KPI Dashboard**: View the results of the latest simulation, including Total Profit, Efficiency Score, and charts for delivery status and fuel costs.
 * **Data Management**: Full CRUD (Create, Read, Update, Delete) functionality for managing Drivers, Routes, and Orders.
