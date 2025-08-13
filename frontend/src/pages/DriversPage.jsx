@@ -11,7 +11,8 @@ const DriversPage = () => {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentDriver, setCurrentDriver] = useState(null);
-  const [formData, setFormData] = useState({ name: '', currentShiftHours: 0, past7DayWorkHours: [] });
+  const [formData, setFormData] = useState({ name: '', currentShiftHours: 0 });
+  const [pastHoursInputString, setPastHoursInputString] = useState('');
 
   const BASE_URL = 'https://purple-merit-assessment.onrender.com/api/drivers';
 
@@ -48,46 +49,69 @@ const DriversPage = () => {
     setIsModalOpen(true);
     if (driver) {
       setCurrentDriver(driver);
-      setFormData({ 
+      setFormData({
         name: driver.name,
         currentShiftHours: driver.currentShiftHours,
-        past7DayWorkHours: driver.past7DayWorkHours,
       });
+      setPastHoursInputString(driver.past7DayWorkHours.join(', '));
     } else {
       setCurrentDriver(null);
-      setFormData({ name: '', currentShiftHours: 0, past7DayWorkHours: [] });
+      setFormData({ name: '', currentShiftHours: 0 });
+      setPastHoursInputString('');
     }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentDriver(null);
-    setFormData({ name: '', currentShiftHours: 0, past7DayWorkHours: [] });
+    setFormData({ name: '', currentShiftHours: 0 });
+    setPastHoursInputString('');
   };
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: name === 'past7DayWorkHours' ? value.split(',').map(Number) : value
-    }));
+    if (name === 'pastHoursInputString') {
+      setPastHoursInputString(value);
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    const pastHoursArray = pastHoursInputString
+      .split(',')
+      .filter(item => item.trim() !== '')
+      .map(Number);
+
+    if (pastHoursArray.length !== 7) {
+      setError('Past 7 Day Work Hours must contain exactly 7 values.');
+      return;
+    }
+    
     setLoading(true);
     const token = localStorage.getItem('authToken');
     const method = currentDriver ? 'PUT' : 'POST';
     const url = currentDriver ? `${BASE_URL}/${currentDriver._id}` : BASE_URL;
 
     try {
+      const payload = {
+        ...formData,
+        past7DayWorkHours: pastHoursArray
+      };
+
       const response = await fetch(url, {
         method: method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -98,6 +122,7 @@ const DriversPage = () => {
       closeModal();
     } catch (err) {
       setError(err.message || 'An error occurred.');
+    } finally {
       setLoading(false);
     }
   };
@@ -117,9 +142,9 @@ const DriversPage = () => {
         }
 
         setDrivers(drivers.filter(d => d._id !== driverId));
-        setLoading(false);
       } catch (err) {
         setError(err.message || 'An error occurred.');
+      } finally {
         setLoading(false);
       }
     }
@@ -145,7 +170,7 @@ const DriversPage = () => {
   return (
     <div className="drivers-page-container">
       <header className="page-header">
-        <h2>Driver Management 🧑‍✈️</h2>
+        <h2>Driver Management ✇</h2>
         <button className="add-button" onClick={() => openModal()}>
           <FaPlus size={20} /> Add Driver
         </button>
@@ -188,15 +213,16 @@ const DriversPage = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="past7DayWorkHours">Past 7 Day Work Hours (comma separated)</label>
+                <label htmlFor="pastHoursInputString">Past 7 Day Work Hours (comma separated, exactly 7 values)</label>
                 <input
                   type="text"
-                  id="past7DayWorkHours"
-                  name="past7DayWorkHours"
-                  value={formData.past7DayWorkHours.join(', ')}
+                  id="pastHoursInputString"
+                  name="pastHoursInputString"
+                  value={pastHoursInputString}
                   onChange={handleFormChange}
                 />
               </div>
+              {error && <p className="error-message">{error}</p>}
               <button type="submit" className="submit-button" disabled={loading}>
                 {loading ? 'Saving...' : 'Save'}
               </button>
