@@ -1,0 +1,116 @@
+.register-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e2e8f0;
+    padding: 1rem;
+}
+
+.register-form-card {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.register-form-card h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    color: #2ecc71;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-button {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.register-button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.register-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.login-link {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.login-link a {
+    color: #3498db;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .register-form-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .register-form-card h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
